@@ -4,24 +4,77 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
     <link href="style.css" rel="stylesheet" />
     <title>Auditor Appointment</title>
   </head>
   <body>
     <div id="app">
       <form>
-        <fieldset>
-          <label for="value1">Value 1: {{value1}}</label>
-          <input id="value1" v-model="value1" type="text" />
-        </fieldset>
-        <fieldset>
-          <label for="value2">Value 2: {{value2}}</label>
-          <input id="value2" v-model="value2" type="text" />
-        </fieldset>
+        <h2>Audit Team</h2>
+        <div>
+          <fieldset>
+            <legend>Islamic Expert</legend>
+            <label>Nome</label>
+            <select v-model="islamicExpertNome">
+              <option>Mansur Giuseppe Baudo</option>
+              <option>Aisha Valeria Lazzerini</option>
+              <option>Halima Erika Rubbo</option>
+              <option>Nabil Haman</option>
+            </select>
+  
+            <label>Ente</label>
+            <input type="text" disabled v-model="islamicExpertEnte">
+  
+            <label>Funzione</label>
+            <select v-model="islamicExpertFunzione">
+              <option>Audit team leader</option>
+              <option>Auditor stage 1</option>
+              <option>Auditor stage 2</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend>Tehnical Expert</legend>
+            <label>Nome</label>
+            <select v-model="technicalExpertNome">
+                <option>Rim Souda</option>
+                <option>Bechir Bakey</option>
+                <option>Alberto Dal Molin</option>
+                <option>Matheus Monaco</option>
+            </select>
+  
+            <label>Ente</label>
+            <input type="text" disabled v-model="technicalExpertEnte">
+  
+            <label>Funzione</label>
+            <select v-model="technicalExpertFunzione">
+              <option>Audit team leader</option>
+              <option>Auditor stage 1</option>
+              <option>Auditor stage 2</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend>Tehnical Auditor</legend>
+            <label>Nome</label>
+            <select v-model="technicalAuditorNome">
+                <option>Hatice Gurses</option>
+                <option>Nabil Haman</option>
+            </select>
+  
+            <label>Ente</label>
+            <input type="text" disabled v-model="technicalAuditorEnte">
+  
+            <label>Funzione</label>
+            <select v-model="technicalAuditorFunzione">
+              <option>Audit team leader</option>
+              <option>Auditor stage 1</option>
+              <option>Auditor stage 2</option>
+            </select>
+          </fieldset>
+        </div>
       </form>
     </div>
 

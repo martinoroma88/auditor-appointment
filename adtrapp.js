@@ -1,14 +1,21 @@
 const app = {
   data() {
     return {
-      value1: "",
-      value2: ""
+      islamicExpertNome: "",
+      islamicExpertFunzione: "",
+      islamicExpertEnte: "Halal Italia Srl",
+      technicalExpertNome: "",
+      technicalExpertFunzione: "",
+      technicalExpertEnte: "Halal Italia Srl",
+      technicalAuditorNome: "",
+      technicalAuditorFunzione: "",
+      technicalAuditorEnte: "Halal Italia Srl",
     };
   }
 };
 
 const vm = Vue.createApp(app).mount("#app");
 
-const retrieveData = function () {
+const getData = function () {
   return { ...vm.$data };
 };

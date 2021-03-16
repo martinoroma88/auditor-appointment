@@ -1,3 +1,6 @@
+//const html = ``;
+// document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
+
 const app = {
   data() {
     return {
@@ -9,7 +12,7 @@ const app = {
       technicalExpertEnte: "Halal Italia Srl",
       technicalAuditorNome: "",
       technicalAuditorFunzione: "",
-      technicalAuditorEnte: "Halal Italia Srl",
+      technicalAuditorEnte: "Halal Italia Srl"
     };
   }
 };

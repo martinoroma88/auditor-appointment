@@ -19,7 +19,7 @@
           <fieldset>
             <h4>Islamic Expert</h4>
             <label>Nome</label>
-            <select v-model="islamicExpertNome">
+            <select v-model="result.islamicExpertNome">
               <option>Mansur Giuseppe Baudo</option>
               <option>Aisha Valeria Lazzerini</option>
               <option>Halima Erika Rubbo</option>
@@ -27,10 +27,10 @@
             </select>
 
             <label>Ente</label>
-            <input type="text" disabled v-model="islamicExpertEnte" />
+            <input type="text" disabled v-model="result.islamicExpertEnte" />
 
             <label>Funzione</label>
-            <select v-model="islamicExpertFunzione">
+            <select v-model="result.islamicExpertFunzione">
               <option>Audit team leader</option>
               <option>Auditor stage 1</option>
               <option>Auditor stage 2</option>
@@ -40,7 +40,7 @@
           <fieldset>
             <h4>Tehnical Expert</h4>
             <label>Nome</label>
-            <select v-model="technicalExpertNome">
+            <select v-model="result.technicalExpertNome">
               <option>Rim Souda</option>
               <option>Bechir Bakey</option>
               <option>Alberto Dal Molin</option>
@@ -48,10 +48,10 @@
             </select>
 
             <label>Ente</label>
-            <input type="text" disabled v-model="technicalExpertEnte" />
+            <input type="text" disabled v-model="result.technicalExpertEnte" />
 
             <label>Funzione</label>
-            <select v-model="technicalExpertFunzione">
+            <select v-model="result.technicalExpertFunzione">
               <option>Audit team leader</option>
               <option>Auditor stage 1</option>
               <option>Auditor stage 2</option>
@@ -61,16 +61,16 @@
           <fieldset>
             <h4>Tehnical Auditor</h4>
             <label>Nome</label>
-            <select v-model="technicalAuditorNome">
+            <select v-model="result.technicalAuditorNome">
               <option>Hatice Gurses</option>
               <option>Nabil Haman</option>
             </select>
 
             <label>Ente</label>
-            <input type="text" disabled v-model="technicalAuditorEnte" />
+            <input type="text" disabled v-model="result.technicalAuditorEnte" />
 
             <label>Funzione</label>
-            <select v-model="technicalAuditorFunzione">
+            <select v-model="result.technicalAuditorFunzione">
               <option>Audit team leader</option>
               <option>Auditor stage 1</option>
               <option>Auditor stage 2</option>
@@ -81,8 +81,8 @@
         <h3>Cliente</h3>
         <div>
           <fieldset>
-            <label>Company</label>
-            <input type="text" />
+            <label>Ragione sociale</label>
+            <input type="text" v-model="result.clienteNome" disabled />
           </fieldset>
         </div>
       </form>

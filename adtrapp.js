@@ -1,13 +1,19 @@
 //const html = ``;
 // document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
 
-const cliente = {
-  nome: "Agugiaro & Figna Molini S.p.A."
+const db = {
+  company: "Agugiaro & Figna Molini S.p.A.",
+  legalAddress: "Strada dei Notari, 25/27 Collecchio di Parma",
+  representatives: ["Stefano Mattioli", "Elena Pezzolato"],
+  addresses: ["Strada dei Notari, 25/27 Collecchio di Parma", "Via Monte Nero, 111 Curtarolo di Padova"],
+  category: "E",
+  code: "AGU"
 };
 
 const app = {
   data() {
     return {
+      db: db,
       result: {
         islamicExpertNome: "",
         islamicExpertFunzione: "",
@@ -18,12 +24,23 @@ const app = {
         technicalAuditorNome: "",
         technicalAuditorFunzione: "",
         technicalAuditorEnte: "Halal Italia Srl",
-        clienteNome: ""
+        company: "",
+        legalAddress: "",
+        representative: "",
+        addressPlantA: "",
+        addressPlantB: "",
+        category: "",
+        code: "",
+        type: "",
+        before: "",
       }
     };
   },
   mounted() {
-    this.result.clienteNome = cliente.nome;
+    this.result.company = this.db.company;
+    this.result.legalAddress = this.db.legalAddress;
+    this.result.category = this.db.category;
+    this.result.code = this.db.code;
   }
 };
 

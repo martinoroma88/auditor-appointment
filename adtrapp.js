@@ -7,7 +7,7 @@ const db = {
   representatives: ["Stefano Mattioli", "Elena Pezzolato"],
   addresses: ["Strada dei Notari, 25/27 Collecchio di Parma", "Via Monte Nero, 111 Curtarolo di Padova"],
   category: "E",
-  code: "AGU"
+  code: "AGU",
 };
 
 const app = {
@@ -33,6 +33,13 @@ const app = {
         code: "",
         type: "",
         before: "",
+        number: "",
+        duration: "",
+        stage1: "",
+        stage2: "",
+        standard: [],
+        scheme: "",
+        scope: "",
       }
     };
   },
@@ -41,6 +48,17 @@ const app = {
     this.result.legalAddress = this.db.legalAddress;
     this.result.category = this.db.category;
     this.result.code = this.db.code;
+  },
+  methods: {
+    addStd() {
+      console.log("running")
+      let myArr = [];
+      const inputs = document.querySelectorAll("#std input:checked");
+      inputs.forEach(i => {
+        myArr.push(i.value)
+      });
+      this.result.standard = myArr; 
+    }
   }
 };
 

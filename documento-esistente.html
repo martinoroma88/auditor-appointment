@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Auditor Appointment</title>
+  </head>
+  <body>
+    <div id="appContainer"></div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="adtrapp.js"></script>
+    <script>
+      // Dati anagrafica cliente dal database
+      const db = {
+        company: "Agugiaro & Figna Molini S.p.A.",
+        legalAddress: "Strada dei Notari, 25/27 Collecchio di Parma",
+        representatives: ["Stefano Mattioli", "Elena Pezzolato"],
+        addresses: [
+          "Strada dei Notari, 25/27 Collecchio di Parma",
+          "Via Monte Nero, 111 Curtarolo di Padova"
+        ],
+        category: "E",
+        code: "AGU"
+      };
+
+      // Se il documento esiste già, passare i dati in tal modo
+      const doc = {
+        date: "2021-03-18",
+        islamicExpertNome: "Mansur Giuseppe Baudo",
+        islamicExpertFunzione: "Audit team leader",
+        islamicExpertEnte: "Halal Italia Srl",
+        technicalExpertNome: "Rim Souda",
+        technicalExpertFunzione: "Auditor stage 1",
+        technicalExpertEnte: "Halal Italia Srl",
+        technicalAuditorNome: "Hatice Gurses",
+        technicalAuditorFunzione: "Auditor stage 2",
+        technicalAuditorEnte: "Halal Italia Srl",
+        company: "Agugiaro & Figna Molini S.p.A.",
+        legalAddress: "Strada dei Notari, 25/27 Collecchio di Parma",
+        representative: "",
+        addressPlantA: "Strada dei Notari, 25/27 Collecchio di Parma",
+        addressPlantB: "Via Monte Nero, 111 Curtarolo di Padova",
+        category: "E",
+        code: "AGU",
+        type: "Pre-Audit",
+        before: "2021-03-30",
+        number: "2",
+        duration: "5",
+        stage1: "2021-03-20",
+        stage2: "2021-03-22",
+        standard: ["GSO 2055 - 1", "COREIS DTP HLL 02"],
+        scheme: "aaa",
+        scope: "bbb"
+      };
+
+      // Chiama la funziona passando i dati per creare il form
+      const form = creaForm(db, doc);
+
+      // Richiama i dati compilati
+      const getData = function () {
+        return form.$data.result;
+      };
+    </script>
+  </body>
+</html>

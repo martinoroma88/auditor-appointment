@@ -1,21 +1,83 @@
 const creaForm = function (db, doc) {
-  const html = `<link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
-    />
+  const html = `
+    <style>
+    #a-form {
+
+      --q1: 7;
+      --q2: 15;
+      --q3: 21;
+      --q4: 50;
+      --color: black;
+      --bg: white;
+      --accent: green;
+      --warning: red;
+      font-family: inherit; }
+    
+    
+    /* Reset */
+    
+    #a-form fieldset {
+      margin: 2em 0;
+      padding: 1em 1em 0 1em;
+      box-sizing: border-box; }
+    
+    
+    /* Layout */
+    #a-form .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    #a-form #std .column > div {
+      display: flex;
+      padding: .5em 0;
+    }
+    
+    
+    /* Inputs */
+    
+    #a-form input:not([type="checkbox"]):not([type="radio"]), #a-form input[type="date"], #a-form select, #a-form textarea {
+      font-size: 1em;
+      margin-bottom: 1em;
+      display: block;
+      padding: calc(var(--q1) * 1px);
+      font-family: inherit; }
+    
+    #a-form input[type="checkbox"] {
+      margin-right: calc(var(--q1) * 1px); }
+    
+    #a-form input[readonly] { 
+      background-color: #f8f8f8; }
+    
+    
+    /* Typography */
+    
+    #a-form label:not(.dr__simplelabel) {
+      display: block;
+      font-family: inherit;
+      margin-bottom: calc(var(--q1) * 1px);
+      font-weight: bold; }
+    
+    #a-form .alone { grid-column: span 2; }
+    
+    #a-form p { padding-top: calc(var(--q1) * 1px); }
+    
+    #a-form h2 { padding-bottom: calc(var(--q2) * 1px); font-size: 21px; font-weight: bold; }
+    </style>
     <div id="app" class="container" style="background: white;">
       <h1>Auditor Appointment</h1>
-      <form>
-        <h3>Audit Team</h3>
+      <form id="a-form">
         <div class="row">
           <div class="column">
             <label class="inline-label">Date</label>
             <input v-model="result.date" type="date" />
           </div>
         </div>
+        <br>
         <div class="row">
           <fieldset class="column">
-            <h4>Islamic Expert</h4>
+            <legend>Islamic Expert</legend>
             <label>Nome</label>
             <select v-model="result.islamicExpertNome">
               <option></option>
@@ -38,7 +100,7 @@ const creaForm = function (db, doc) {
           </fieldset>
   
           <fieldset class="column">
-            <h4>Tehnical Expert</h4>
+            <legend>Tehnical Expert</legend>
             <label>Nome</label>
             <select v-model="result.technicalExpertNome">
               <option></option>
@@ -65,7 +127,7 @@ const creaForm = function (db, doc) {
           </fieldset>
   
           <fieldset class="column">
-            <h4>Tehnical Auditor</h4>
+            <legend>Tehnical Auditor</legend>
             <label>Nome</label>
             <select v-model="result.technicalAuditorNome">
               <option></option>
@@ -89,101 +151,101 @@ const creaForm = function (db, doc) {
             </select>
           </fieldset>
         </div>
+    
+        <fieldset> 
+          <legend>Cliente</legend>
+          <div class="row">
+            <div class="column">
+              <label>Company</label>
+              <input type="text" v-model="result.company" disabled />
+            </div>
+    
+            <div class="column">
+              <label>Legal Address</label>
+              <input type="text" v-model="result.legalAddress" disabled />
+            </div>
+    
+            <div class="column">
+              <label>Company representative</label>
+              <select v-model="result.representative">
+                <option></option>
+                <option v-for="r in db.representatives" :key="r">{{r}}</option>
+              </select>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="column">
+              <label>Address of plant A</label>
+              <select v-model="result.addressPlantA">
+                <option></option>
+                <option v-for="i in db.addresses" :key="i">{{i}}</option>
+              </select>
+            </div>
+            <div class="column">
+              <label>Address of plant B</label>
+              <select v-model="result.addressPlantB">
+                <option></option>
+                <option v-for="i in db.addresses" :key="i">{{i}}</option>
+              </select>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="column">
+              <label>Category</label>
+              <input type="text" v-model="result.category" disabled />
+            </div>
+            <div class="column">
+              <label>Company Code</label>
+              <input type="text" v-model="result.code" disabled />
+            </div>
+          </div>
+        </fieldset>
   
-        <br />
-  
-        <h3>Cliente</h3>
-        <div class="row">
-          <fieldset class="column">
-            <label>Company</label>
-            <input type="text" v-model="result.company" disabled />
-          </fieldset>
-  
-          <fieldset class="column">
-            <label>Legal Address</label>
-            <input type="text" v-model="result.legalAddress" disabled />
-          </fieldset>
-  
-          <fieldset class="column">
-            <label>Company representative</label>
-            <select v-model="result.representative">
-              <option></option>
-              <option v-for="r in db.representatives" :key="r">{{r}}</option>
-            </select>
-          </fieldset>
-        </div>
-  
-        <div class="row">
-          <fieldset class="column">
-            <label>Address of plant A</label>
-            <select v-model="result.addressPlantA">
-              <option></option>
-              <option v-for="i in db.addresses" :key="i">{{i}}</option>
-            </select>
-          </fieldset>
-          <fieldset class="column">
-            <label>Address of plant B</label>
-            <select v-model="result.addressPlantB">
-              <option></option>
-              <option v-for="i in db.addresses" :key="i">{{i}}</option>
-            </select>
-          </fieldset>
-        </div>
-  
-        <div class="row">
-          <fieldset class="column">
-            <label>Category</label>
-            <input type="text" v-model="result.category" disabled />
-          </fieldset>
-          <fieldset class="column">
-            <label>Company Code</label>
-            <input type="text" v-model="result.code" disabled />
-          </fieldset>
-        </div>
-  
-        <br />
-  
-        <h3>Audit</h3>
-        <div class="row">
-          <fieldset class="column">
-            <label>Type of Audit</label>
-            <select v-model="result.type">
-              <option></option>
-              <option>Pre-Audit</option>
-              <option>Certification</option>
-              <option>Maintenance</option>
-              <option>Extension</option>
-              <option>Additional Audit</option>
-              <option>Renewal</option>
-            </select>
-          </fieldset>
-          <fieldset class="column">
-            <label>Before</label>
-            <input type="date" v-model="result.before" />
-          </fieldset>
-          <fieldset class="column">
-            <label>Audit No.</label>
-            <input type="text" v-model="result.number" />
-          </fieldset>
-        </div>
-  
-        <div class="row">
-          <fieldset class="column">
-            <label>Audit duration</label
-            ><input v-model="result.duration" type="text" />
-          </fieldset>
-          <fieldset class="column">
-            <label>Stage 1 Doc. Evaluation</label
-            ><input v-model="result.stage1" type="date" />
-          </fieldset>
-          <fieldset class="column">
-            <label>Stage 2 Audit</label
-            ><input v-model="result.stage2" type="date" />
-          </fieldset>
-        </div>
+        <fieldset>
+          <legend>Audit</legend>
+          <div class="row">
+            <div class="column">
+              <label>Type of Audit</label>
+              <select v-model="result.type">
+                <option></option>
+                <option>Pre-Audit</option>
+                <option>Certification</option>
+                <option>Maintenance</option>
+                <option>Extension</option>
+                <option>Additional Audit</option>
+                <option>Renewal</option>
+              </select>
+            </div>
+            <div class="column">
+              <label>Before</label>
+              <input type="date" v-model="result.before" />
+            </div>
+            <div class="column">
+              <label>Audit No.</label>
+              <input type="text" v-model="result.number" />
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="column">
+              <label>Audit duration</label
+              ><input v-model="result.duration" type="text" />
+            </div>
+            <div class="column">
+              <label>Stage 1 Doc. Evaluation</label
+              ><input v-model="result.stage1" type="date" />
+            </div>
+            <div class="column">
+              <label>Stage 2 Audit</label
+              ><input v-model="result.stage2" type="date" />
+            </div>
+          </div>
+        </fieldset>
   
         <fieldset id="std" @click="addStd">
-          <label>Certification Standard</label>
+          <legend>Certification Standard</legend>
           <div class="row">
             <div class="column">
               <div>
@@ -238,16 +300,18 @@ const creaForm = function (db, doc) {
           </div>
         </fieldset>
   
-        <div class="row">
-          <fieldset class="column">
-            <label>Certification Scheme</label
-            ><input v-model="result.scheme" type="text" />
-          </fieldset>
-          <fieldset class="column">
-            <label>Scope of certification</label
-            ><input v-model="result.scope" type="text" />
-          </fieldset>
-        </div>
+        <fieldset>
+          <div class="row">
+            <div class="column">
+              <label>Certification Scheme</label
+              ><input v-model="result.scheme" type="text" />
+            </div>
+            <div class="column">
+              <label>Scope of certification</label
+              ><input v-model="result.scope" type="text" />
+            </div>
+          </div>
+        </fieldset>
       </form>
     </div>`;
   document
@@ -317,6 +381,11 @@ const creaForm = function (db, doc) {
             this.result[key] = doc[key];
           }
         }
+
+        doc.standard.forEach((s) => {
+          const i = document.querySelector('#std input[value="' + s + '"]');
+          i.checked = true;
+        });
       }
     },
     methods: {
@@ -328,6 +397,15 @@ const creaForm = function (db, doc) {
           myArr.push(i.value);
         });
         this.result.standard = myArr;
+      }
+    },
+    watch: {
+      result: {
+        deep: true,
+        handler: function (val) {
+          console.log(val);
+          document.querySelector("body").classList.add("hasChanges");
+        }
       }
     }
   };

@@ -1,70 +1,93 @@
 const creaForm = function (db, doc) {
   const html = `
-    <style>
-    #a-form {
+  <style>
+      #a-form {
+        --q1: 7;
+        --q2: 15;
+        --q3: 21;
+        --q4: 50;
+        --color: black;
+        --bg: white;
+        --accent: green;
+        --warning: red;
+        font-family: inherit;
+      }
 
-      --q1: 7;
-      --q2: 15;
-      --q3: 21;
-      --q4: 50;
-      --color: black;
-      --bg: white;
-      --accent: green;
-      --warning: red;
-      font-family: inherit; }
-    
-    
-    /* Reset */
-    
-    #a-form fieldset {
-      margin: 2em 0;
-      padding: 1em 1em 0 1em;
-      box-sizing: border-box; }
-    
-    
-    /* Layout */
-    #a-form .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1rem;
-    }
+      #a-form legend {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
 
-    #a-form #std .column > div {
-      display: flex;
-      padding: .5em 0;
-    }
-    
-    
-    /* Inputs */
-    
-    #a-form input:not([type="checkbox"]):not([type="radio"]), #a-form input[type="date"], #a-form select, #a-form textarea {
-      font-size: 1em;
-      margin-bottom: 1em;
-      display: block;
-      padding: calc(var(--q1) * 1px);
-      font-family: inherit; }
-    
-    #a-form input[type="checkbox"] {
-      margin-right: calc(var(--q1) * 1px); }
-    
-    #a-form input[readonly] { 
-      background-color: #f8f8f8; }
-    
-    
-    /* Typography */
-    
-    #a-form label:not(.dr__simplelabel) {
-      display: block;
-      font-family: inherit;
-      margin-bottom: calc(var(--q1) * 1px);
-      font-weight: bold; }
-    
-    #a-form .alone { grid-column: span 2; }
-    
-    #a-form p { padding-top: calc(var(--q1) * 1px); }
-    
-    #a-form h2 { padding-bottom: calc(var(--q2) * 1px); font-size: 21px; font-weight: bold; }
+      /* Reset */
+
+      #a-form fieldset {
+        margin: 2em 0;
+        padding: 1em 1em 0 1em;
+        box-sizing: border-box;
+      }
+
+      #a-form .column {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Layout */
+      #a-form .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+      }
+
+      #a-form #std .column > div {
+        display: flex;
+        padding: 0.5em 0;
+      }
+
+      /* Inputs */
+
+      #a-form input:not([type="checkbox"]):not([type="radio"]),
+      #a-form input[type="date"],
+      #a-form select,
+      #a-form textarea {
+        font-size: 1em;
+        margin-bottom: 1em;
+        display: block;
+        padding: calc(var(--q1) * 1px);
+        font-family: inherit;
+      }
+
+      #a-form input[type="checkbox"] {
+        margin-right: calc(var(--q1) * 1px);
+      }
+
+      #a-form input[readonly] {
+        background-color: #f8f8f8;
+      }
+
+      /* Typography */
+
+      #a-form label:not(.dr__simplelabel) {
+        display: block;
+        font-family: inherit;
+        margin-bottom: calc(var(--q1) * 1px);
+        font-weight: bold;
+      }
+
+      #a-form .alone {
+        grid-column: span 2;
+      }
+
+      #a-form p {
+        padding-top: calc(var(--q1) * 1px);
+      }
+
+      #a-form h2 {
+        padding-bottom: calc(var(--q2) * 1px);
+        font-size: 21px;
+        font-weight: bold;
+      }
     </style>
+
     <div id="app" class="container" style="background: white;">
       <h1>Auditor Appointment</h1>
       <form id="a-form">
@@ -74,97 +97,308 @@ const creaForm = function (db, doc) {
             <input v-model="result.date" type="date" />
           </div>
         </div>
-        <br>
-        <div class="row">
-          <fieldset class="column">
-            <legend>Islamic Expert</legend>
-            <label>Nome</label>
-            <select v-model="result.islamicExpertNome">
-              <option></option>
-              <option>Mansur Giuseppe Baudo</option>
-              <option>Aisha Valeria Lazzerini</option>
-              <option>Halima Erika Rubbo</option>
-              <option>Nabil Haman</option>
-            </select>
-  
-            <label>Ente</label>
-            <input type="text" disabled v-model="result.islamicExpertEnte" />
-  
-            <label>Funzione</label>
-            <select v-model="result.islamicExpertFunzione">
-              <option></option>
-              <option>Audit team leader</option>
-              <option>Auditor stage 1</option>
-              <option>Auditor stage 2</option>
-            </select>
-          </fieldset>
-  
-          <fieldset class="column">
-            <legend>Tehnical Expert</legend>
-            <label>Nome</label>
-            <select v-model="result.technicalExpertNome">
-              <option></option>
-              <option>Rim Souda</option>
-              <option>Bechir Bakey</option>
-              <option>Alberto Dal Molin</option>
-              <option>Matheus Monaco</option>
-            </select>
-  
-            <label>Ente</label>
-            <input
-              type="text"
-              disabled
-              v-model="result.technicalExpertEnte"
-            />
-  
-            <label>Funzione</label>
-            <select v-model="result.technicalExpertFunzione">
-              <option></option>
-              <option>Audit team leader</option>
-              <option>Auditor stage 1</option>
-              <option>Auditor stage 2</option>
-            </select>
-          </fieldset>
-  
-          <fieldset class="column">
-            <legend>Tehnical Auditor</legend>
-            <label>Nome</label>
-            <select v-model="result.technicalAuditorNome">
-              <option></option>
-              <option>Hatice Gurses</option>
-              <option>Nabil Haman</option>
-            </select>
-  
-            <label>Ente</label>
-            <input
-              type="text"
-              disabled
-              v-model="result.technicalAuditorEnte"
-            />
-  
-            <label>Funzione</label>
-            <select v-model="result.technicalAuditorFunzione">
-              <option></option>
-              <option>Audit team leader</option>
-              <option>Auditor stage 1</option>
-              <option>Auditor stage 2</option>
-            </select>
-          </fieldset>
-        </div>
-    
-        <fieldset> 
+
+        <fieldset>
+          <legend>Team</legend>
+          <div class="row">
+            <div class="column">
+              <label>Tipologia</label>
+              <select v-model="result.person1.type">
+                <option></option>
+                <option>Islamic Expert</option>
+                <option>Technical Expert</option>
+                <option>Technical Auditor</option>
+              </select>
+            </div>
+            <div class="column">
+              <label>Nome</label>
+              <select v-model="result.person1.name">
+                <option></option>
+                <option v-if="result.person1.type === 'Islamic Expert'"
+                  >Mansur Giuseppe Baudo</option
+                >
+                <option v-if="result.person1.type === 'Islamic Expert'"
+                  >Aisha Valeria Lazzerini</option
+                >
+                <option v-if="result.person1.type === 'Islamic Expert'"
+                  >Halima Erika Rubbo</option
+                >
+                <option v-if="result.person1.type === 'Islamic Expert'"
+                  >Nabil Haman</option
+                >
+                <option v-if="result.person1.type === 'Technical Expert'"
+                  >Rim Souda</option
+                >
+                <option v-if="result.person1.type === 'Technical Expert'"
+                  >Bechir Bakey</option
+                >
+                <option v-if="result.person1.type === 'Technical Expert'"
+                  >Alberto Dal Molin</option
+                >
+                <option v-if="result.person1.type === 'Technical Expert'"
+                  >Matheus Monaco</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
+                  >Hatice Gurses</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
+                  >Nabil Haman</option
+                >
+              </select>
+            </div>
+            <div class="column">
+              <label>Funzione</label>
+              <select v-model="result.person1.funzione">
+                <option></option>
+                <option>Audit team leader</option>
+                <option>Auditor stage 1</option>
+                <option>Auditor stage 2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column">
+              <label>Tipologia</label>
+              <select v-model="result.person2.type">
+                <option></option>
+                <option>Islamic Expert</option>
+                <option>Technical Expert</option>
+                <option>Technical Auditor</option>
+              </select>
+            </div>
+            <div class="column">
+              <label>Nome</label>
+              <select v-model="result.person2.name">
+                <option></option>
+                <option v-if="result.person2.type === 'Islamic Expert'"
+                  >Mansur Giuseppe Baudo</option
+                >
+                <option v-if="result.person2.type === 'Islamic Expert'"
+                  >Aisha Valeria Lazzerini</option
+                >
+                <option v-if="result.person2.type === 'Islamic Expert'"
+                  >Halima Erika Rubbo</option
+                >
+                <option v-if="result.person2.type === 'Islamic Expert'"
+                  >Nabil Haman</option
+                >
+                <option v-if="result.person2.type === 'Technical Expert'"
+                  >Rim Souda</option
+                >
+                <option v-if="result.person2.type === 'Technical Expert'"
+                  >Bechir Bakey</option
+                >
+                <option v-if="result.person2.type === 'Technical Expert'"
+                  >Alberto Dal Molin</option
+                >
+                <option v-if="result.person2.type === 'Technical Expert'"
+                  >Matheus Monaco</option
+                >
+                <option v-if="result.person2.type === 'Technical Auditor'"
+                  >Hatice Gurses</option
+                >
+                <option v-if="result.person2.type === 'Technical Auditor'"
+                  >Nabil Haman</option
+                >
+              </select>
+            </div>
+            <div class="column">
+              <label>Funzione</label>
+              <select v-model="result.person2.funzione">
+                <option></option>
+                <option>Audit team leader</option>
+                <option>Auditor stage 1</option>
+                <option>Auditor stage 2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column">
+              <label>Tipologia</label>
+              <select v-model="result.person3.type">
+                <option></option>
+                <option>Islamic Expert</option>
+                <option>Technical Expert</option>
+                <option>Technical Auditor</option>
+              </select>
+            </div>
+            <div class="column">
+              <label>Nome</label>
+              <select v-model="result.person3.name">
+                <option></option>
+                <option v-if="result.person3.type === 'Islamic Expert'"
+                  >Mansur Giuseppe Baudo</option
+                >
+                <option v-if="result.person3.type === 'Islamic Expert'"
+                  >Aisha Valeria Lazzerini</option
+                >
+                <option v-if="result.person3.type === 'Islamic Expert'"
+                  >Halima Erika Rubbo</option
+                >
+                <option v-if="result.person3.type === 'Islamic Expert'"
+                  >Nabil Haman</option
+                >
+                <option v-if="result.person3.type === 'Technical Expert'"
+                  >Rim Souda</option
+                >
+                <option v-if="result.person3.type === 'Technical Expert'"
+                  >Bechir Bakey</option
+                >
+                <option v-if="result.person3.type === 'Technical Expert'"
+                  >Alberto Dal Molin</option
+                >
+                <option v-if="result.person3.type === 'Technical Expert'"
+                  >Matheus Monaco</option
+                >
+                <option v-if="result.person3.type === 'Technical Auditor'"
+                  >Hatice Gurses</option
+                >
+                <option v-if="result.person3.type === 'Technical Auditor'"
+                  >Nabil Haman</option
+                >
+              </select>
+            </div>
+            <div class="column">
+              <label>Funzione</label>
+              <select v-model="result.person3.funzione">
+                <option></option>
+                <option>Audit team leader</option>
+                <option>Auditor stage 1</option>
+                <option>Auditor stage 2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column">
+              <label>Tipologia</label>
+              <select v-model="result.person4.type">
+                <option></option>
+                <option>Islamic Expert</option>
+                <option>Technical Expert</option>
+                <option>Technical Auditor</option>
+              </select>
+            </div>
+            <div class="column">
+              <label>Nome</label>
+              <select v-model="result.person4.name">
+                <option></option>
+                <option v-if="result.person4.type === 'Islamic Expert'"
+                  >Mansur Giuseppe Baudo</option
+                >
+                <option v-if="result.person4.type === 'Islamic Expert'"
+                  >Aisha Valeria Lazzerini</option
+                >
+                <option v-if="result.person4.type === 'Islamic Expert'"
+                  >Halima Erika Rubbo</option
+                >
+                <option v-if="result.person4.type === 'Islamic Expert'"
+                  >Nabil Haman</option
+                >
+                <option v-if="result.person4.type === 'Technical Expert'"
+                  >Rim Souda</option
+                >
+                <option v-if="result.person4.type === 'Technical Expert'"
+                  >Bechir Bakey</option
+                >
+                <option v-if="result.person4.type === 'Technical Expert'"
+                  >Alberto Dal Molin</option
+                >
+                <option v-if="result.person4.type === 'Technical Expert'"
+                  >Matheus Monaco</option
+                >
+                <option v-if="result.person4.type === 'Technical Auditor'"
+                  >Hatice Gurses</option
+                >
+                <option v-if="result.person4.type === 'Technical Auditor'"
+                  >Nabil Haman</option
+                >
+              </select>
+            </div>
+            <div class="column">
+              <label>Funzione</label>
+              <select v-model="result.person4.funzione">
+                <option></option>
+                <option>Audit team leader</option>
+                <option>Auditor stage 1</option>
+                <option>Auditor stage 2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column">
+              <label>Tipologia</label>
+              <select v-model="result.person5.type">
+                <option></option>
+                <option>Islamic Expert</option>
+                <option>Technical Expert</option>
+                <option>Technical Auditor</option>
+              </select>
+            </div>
+            <div class="column">
+              <label>Nome</label>
+              <select v-model="result.person5.name">
+                <option></option>
+                <option v-if="result.person5.type === 'Islamic Expert'"
+                  >Mansur Giuseppe Baudo</option
+                >
+                <option v-if="result.person5.type === 'Islamic Expert'"
+                  >Aisha Valeria Lazzerini</option
+                >
+                <option v-if="result.person5.type === 'Islamic Expert'"
+                  >Halima Erika Rubbo</option
+                >
+                <option v-if="result.person5.type === 'Islamic Expert'"
+                  >Nabil Haman</option
+                >
+                <option v-if="result.person5.type === 'Technical Expert'"
+                  >Rim Souda</option
+                >
+                <option v-if="result.person5.type === 'Technical Expert'"
+                  >Bechir Bakey</option
+                >
+                <option v-if="result.person5.type === 'Technical Expert'"
+                  >Alberto Dal Molin</option
+                >
+                <option v-if="result.person5.type === 'Technical Expert'"
+                  >Matheus Monaco</option
+                >
+                <option v-if="result.person5.type === 'Technical Auditor'"
+                  >Hatice Gurses</option
+                >
+                <option v-if="result.person5.type === 'Technical Auditor'"
+                  >Nabil Haman</option
+                >
+              </select>
+            </div>
+            <div class="column">
+              <label>Funzione</label>
+              <select v-model="result.person5.funzione">
+                <option></option>
+                <option>Audit team leader</option>
+                <option>Auditor stage 1</option>
+                <option>Auditor stage 2</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
           <legend>Cliente</legend>
           <div class="row">
             <div class="column">
               <label>Company</label>
               <input type="text" v-model="result.company" disabled />
             </div>
-    
+
             <div class="column">
               <label>Legal Address</label>
               <input type="text" v-model="result.legalAddress" disabled />
             </div>
-    
+
             <div class="column">
               <label>Company representative</label>
               <select v-model="result.representative">
@@ -173,7 +407,7 @@ const creaForm = function (db, doc) {
               </select>
             </div>
           </div>
-    
+
           <div class="row">
             <div class="column">
               <label>Address of plant A</label>
@@ -190,7 +424,7 @@ const creaForm = function (db, doc) {
               </select>
             </div>
           </div>
-    
+
           <div class="row">
             <div class="column">
               <label>Category</label>
@@ -202,7 +436,7 @@ const creaForm = function (db, doc) {
             </div>
           </div>
         </fieldset>
-  
+
         <fieldset>
           <legend>Audit</legend>
           <div class="row">
@@ -227,7 +461,7 @@ const creaForm = function (db, doc) {
               <input type="text" v-model="result.number" />
             </div>
           </div>
-    
+
           <div class="row">
             <div class="column">
               <label>Audit duration</label
@@ -235,7 +469,7 @@ const creaForm = function (db, doc) {
             </div>
             <div class="column">
               <label>Stage 1 Doc. Evaluation</label
-              ><input v-model="result.stage1" type="date" />
+              ><input v-model="result.stage1" type="text" />
             </div>
             <div class="column">
               <label>Stage 2 Audit</label
@@ -243,7 +477,7 @@ const creaForm = function (db, doc) {
             </div>
           </div>
         </fieldset>
-  
+
         <fieldset id="std" @click="addStd">
           <legend>Certification Standard</legend>
           <div class="row">
@@ -299,7 +533,7 @@ const creaForm = function (db, doc) {
             </div>
           </div>
         </fieldset>
-  
+
         <fieldset>
           <div class="row">
             <div class="column">
@@ -313,7 +547,8 @@ const creaForm = function (db, doc) {
           </div>
         </fieldset>
       </form>
-    </div>`;
+    </div>
+    `;
   document
     .querySelector("#appContainer")
     .insertAdjacentHTML("afterbegin", html);
@@ -324,15 +559,36 @@ const creaForm = function (db, doc) {
         db: db,
         result: {
           date: "",
-          islamicExpertNome: "",
-          islamicExpertFunzione: "",
-          islamicExpertEnte: "Halal Italia Srl",
-          technicalExpertNome: "",
-          technicalExpertFunzione: "",
-          technicalExpertEnte: "Halal Italia Srl",
-          technicalAuditorNome: "",
-          technicalAuditorFunzione: "",
-          technicalAuditorEnte: "Halal Italia Srl",
+          person1: {
+            type: "",
+            name: "",
+            funzione: "",
+            ente: "Halal Italia Srl"
+          },
+          person2: {
+            type: "",
+            name: "",
+            funzione: "",
+            ente: "Halal Italia Srl"
+          },
+          person3: {
+            type: "",
+            name: "",
+            funzione: "",
+            ente: "Halal Italia Srl"
+          },
+          person4: {
+            type: "",
+            name: "",
+            funzione: "",
+            ente: "Halal Italia Srl"
+          },
+          person5: {
+            type: "",
+            name: "",
+            funzione: "",
+            ente: "Halal Italia Srl"
+          },
           company: "",
           legalAddress: "",
           representative: "",
@@ -387,6 +643,9 @@ const creaForm = function (db, doc) {
           i.checked = true;
         });
       }
+      setTimeout(() => {
+        document.querySelector("body").classList.remove("hasChanges");
+      }, 50);
     },
     methods: {
       addStd() {

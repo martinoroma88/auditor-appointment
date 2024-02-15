@@ -126,8 +126,17 @@ const creaForm = function (db, doc) {
                 <option v-if="result.person1.type === 'Islamic Expert'"
                   >Nabil Haman</option
                 >
-                <option v-if="result.person1.type === 'Technical Expert'"
+                <option v-if="result.person1.type === 'Islamic Expert'"
+                  >Nabil Haman</option
+                >
+                <option v-if="result.person1.type === 'Islamic Expert'"
+                  >Mohammed Elshafey</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
                   >Rim Souda</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
+                  >Marwa Grayaa</option
                 >
                 <option v-if="result.person1.type === 'Technical Expert'"
                   >Bechir Bakey</option
@@ -183,8 +192,14 @@ const creaForm = function (db, doc) {
                 <option v-if="result.person2.type === 'Islamic Expert'"
                   >Nabil Haman</option
                 >
-                <option v-if="result.person2.type === 'Technical Expert'"
+                 <option v-if="result.person1.type === 'Islamic Expert'"
+                  >Mohammed Elshafey</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
                   >Rim Souda</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
+                  >Marwa Grayaa</option
                 >
                 <option v-if="result.person2.type === 'Technical Expert'"
                   >Bechir Bakey</option
@@ -240,8 +255,14 @@ const creaForm = function (db, doc) {
                 <option v-if="result.person3.type === 'Islamic Expert'"
                   >Nabil Haman</option
                 >
-                <option v-if="result.person3.type === 'Technical Expert'"
+                 <option v-if="result.person1.type === 'Islamic Expert'"
+                  >Mohammed Elshafey</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
                   >Rim Souda</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
+                  >Marwa Grayaa</option
                 >
                 <option v-if="result.person3.type === 'Technical Expert'"
                   >Bechir Bakey</option
@@ -297,8 +318,14 @@ const creaForm = function (db, doc) {
                 <option v-if="result.person4.type === 'Islamic Expert'"
                   >Nabil Haman</option
                 >
-                <option v-if="result.person4.type === 'Technical Expert'"
+                 <option v-if="result.person1.type === 'Islamic Expert'"
+                  >Mohammed Elshafey</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
                   >Rim Souda</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
+                  >Marwa Grayaa</option
                 >
                 <option v-if="result.person4.type === 'Technical Expert'"
                   >Bechir Bakey</option
@@ -354,8 +381,14 @@ const creaForm = function (db, doc) {
                 <option v-if="result.person5.type === 'Islamic Expert'"
                   >Nabil Haman</option
                 >
-                <option v-if="result.person5.type === 'Technical Expert'"
+                 <option v-if="result.person1.type === 'Islamic Expert'"
+                  >Mohammed Elshafey</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
                   >Rim Souda</option
+                >
+                <option v-if="result.person1.type === 'Technical Auditor'"
+                  >Marwa Grayaa</option
                 >
                 <option v-if="result.person5.type === 'Technical Expert'"
                   >Bechir Bakey</option
@@ -423,9 +456,23 @@ const creaForm = function (db, doc) {
                 <option v-for="i in db.addresses" :key="i">{{i}}</option>
               </select>
             </div>
+            <div class="column">
+              <label>Address of plant C</label>
+              <select v-model="result.addressPlantC">
+                <option></option>
+                <option v-for="i in db.addresses" :key="i">{{i}}</option>
+              </select>
+            </div>
           </div>
 
           <div class="row">
+            <div class="column">
+              <label>Address of plant D</label>
+              <select v-model="result.addressPlantD">
+                <option></option>
+                <option v-for="i in db.addresses" :key="i">{{i}}</option>
+              </select>
+            </div>
             <div class="column">
               <label>Category</label>
               <input type="text" v-model="result.category" disabled />
@@ -594,6 +641,8 @@ const creaForm = function (db, doc) {
           representative: "",
           addressPlantA: "",
           addressPlantB: "",
+          addressPlantC: "",
+          addressPlantD: "",
           category: "",
           code: "",
           type: "",

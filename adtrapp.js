@@ -192,13 +192,13 @@ const creaForm = function (db, doc) {
                 <option v-if="result.person2.type === 'Islamic Expert'"
                   >Nabil Haman</option
                 >
-                 <option v-if="result.person1.type === 'Islamic Expert'"
+                 <option v-if="result.person2.type === 'Islamic Expert'"
                   >Mohammed Elshafey</option
                 >
-                <option v-if="result.person1.type === 'Technical Auditor'"
+                <option v-if="result.person2.type === 'Technical Auditor'"
                   >Rim Souda</option
                 >
-                <option v-if="result.person1.type === 'Technical Auditor'"
+                <option v-if="result.person2.type === 'Technical Auditor'"
                   >Marwa Grayaa</option
                 >
                 <option v-if="result.person2.type === 'Technical Expert'"
@@ -255,13 +255,13 @@ const creaForm = function (db, doc) {
                 <option v-if="result.person3.type === 'Islamic Expert'"
                   >Nabil Haman</option
                 >
-                 <option v-if="result.person1.type === 'Islamic Expert'"
+                 <option v-if="result.person3.type === 'Islamic Expert'"
                   >Mohammed Elshafey</option
                 >
-                <option v-if="result.person1.type === 'Technical Auditor'"
+                <option v-if="result.person3.type === 'Technical Auditor'"
                   >Rim Souda</option
                 >
-                <option v-if="result.person1.type === 'Technical Auditor'"
+                <option v-if="result.person3.type === 'Technical Auditor'"
                   >Marwa Grayaa</option
                 >
                 <option v-if="result.person3.type === 'Technical Expert'"
@@ -318,13 +318,13 @@ const creaForm = function (db, doc) {
                 <option v-if="result.person4.type === 'Islamic Expert'"
                   >Nabil Haman</option
                 >
-                 <option v-if="result.person1.type === 'Islamic Expert'"
+                 <option v-if="result.person4.type === 'Islamic Expert'"
                   >Mohammed Elshafey</option
                 >
-                <option v-if="result.person1.type === 'Technical Auditor'"
+                <option v-if="result.person4.type === 'Technical Auditor'"
                   >Rim Souda</option
                 >
-                <option v-if="result.person1.type === 'Technical Auditor'"
+                <option v-if="result.person4.type === 'Technical Auditor'"
                   >Marwa Grayaa</option
                 >
                 <option v-if="result.person4.type === 'Technical Expert'"
@@ -381,13 +381,13 @@ const creaForm = function (db, doc) {
                 <option v-if="result.person5.type === 'Islamic Expert'"
                   >Nabil Haman</option
                 >
-                 <option v-if="result.person1.type === 'Islamic Expert'"
+                 <option v-if="result.person5.type === 'Islamic Expert'"
                   >Mohammed Elshafey</option
                 >
-                <option v-if="result.person1.type === 'Technical Auditor'"
+                <option v-if="result.person5.type === 'Technical Auditor'"
                   >Rim Souda</option
                 >
-                <option v-if="result.person1.type === 'Technical Auditor'"
+                <option v-if="result.person5.type === 'Technical Auditor'"
                   >Marwa Grayaa</option
                 >
                 <option v-if="result.person5.type === 'Technical Expert'"
